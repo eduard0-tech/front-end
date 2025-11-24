@@ -1,99 +1,166 @@
-body {
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-  }
-  
-  li {
-    display: inline-block;
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #ccc;
-  }
-  
-  button {
-    margin-left: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #3e8e41;
-  }
-  
-  form {
-    margin-top: 20px;
-    text-align: center;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #ccc;
-  }
-  
-  label {
-    display: inline-block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="number"] {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 10px;
+:root {
+    --primary-color: #4a90e2;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f1c40f;
+    --dark-bg: #2c3e50;
+    --light-bg: #ecf0f1;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+* {
     box-sizing: border-box;
-  }
-  
-  input[type="submit"],
-  button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--dark-bg);
+}
+
+/* Layout dos Formulários lado a lado */
+.forms-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .forms-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.form-card h2 {
+    font-size: 1.2rem;
+    text-align: left;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.hint {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Botões Gerais */
+.btn {
+    width: 100%;
+    padding: 10px;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  input[type="submit"]:hover,
-  button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-  
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    transition: opacity 0.3s;
+    margin-top: 5px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-success { background-color: var(--success-color); }
+.btn-primary { background-color: var(--primary-color); }
+.btn-danger { background-color: var(--danger-color); }
+.btn-warning { background-color: var(--warning-color); color: #333; }
+.btn-secondary { background-color: #95a5a6; margin-top: 5px;}
+
+/* Lista de Produtos (Grid de Cards) */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    list-style: none;
+}
+
+.product-item {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 5px solid var(--primary-color);
+}
+
+.product-info {
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--dark-bg);
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons button {
+    width: 50%;
+    font-size: 0.9rem;
+}
